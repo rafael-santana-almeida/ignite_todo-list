@@ -1,8 +1,8 @@
 import { PlusCircle } from 'phosphor-react';
 
-import styles from './Form.module.css';
+import styles from './NewTodoForm.module.css';
 
-export function Form() {
+export function NewTodoForm() {
   return (
     <form className={styles.form}>
       <input placeholder='Adicione uma nova tarefa' type="text" />
@@ -10,5 +10,5 @@ export function Form() {
         Criar
         <PlusCircle size={16} /></button>
     </form>
-  )
+  );
 }
