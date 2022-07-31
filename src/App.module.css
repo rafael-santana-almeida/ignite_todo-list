@@ -10,6 +10,7 @@
 .main header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .main header div {
@@ -36,30 +37,5 @@
   gap: 0.75rem;
   
   list-style: none;
-  margin-top: 1.5rem;
-}
-
-.main ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-
-  padding: 1rem;
-  color: var(--gray-100);
-  background: var(--gray-500);
-  font-size: 0.875rem;
-  border-radius: 8px;
-  height: 4.5rem;
-  line-height: 1.4;
-}
-
-.main ul li button {
-  display: flex;
-  background: transparent;
-  border: none;
-  color: var(--gray-300);
-}
-
-.main ul li button:first-of-type {
-  color: var(--blue-500);
+  
 }
