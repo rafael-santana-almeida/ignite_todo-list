@@ -1,28 +1,28 @@
 import { PlusCircle } from 'phosphor-react';
 import { FormEvent, useState } from 'react';
 
-import styles from './NewTodoForm.module.css';
+import styles from './NewTaskForm.module.css';
 
-interface NewTodoFormProps {
-  onCreateTodo: (title: string) => void;
+interface NewTaskFormProps {
+  onCreateTask: (title: string) => void;
 }
 
-export function NewTodoForm({ onCreateTodo }: NewTodoFormProps) {
+export function NewTaskForm({ onCreateTask }: NewTaskFormProps) {
   const [title, setTitle] = useState('');
 
   function handleChangeTitle(value: string) {
     setTitle(value);
   }
 
-  function handleCreateTodo(event: FormEvent) {
+  function handleCreateTask(event: FormEvent) {
     event.preventDefault();
 
-    onCreateTodo(title);
+    onCreateTask(title);
     setTitle('');
   }
 
   return (
-    <form className={styles.form} onSubmit={handleCreateTodo}>
+    <form className={styles.form} onSubmit={handleCreateTask}>
       <input 
         value={title}
         onChange={(e) => handleChangeTitle(e.target.value)}

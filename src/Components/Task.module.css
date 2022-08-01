@@ -1,4 +1,4 @@
-.todo {
+.task {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -13,7 +13,7 @@
   line-height: 1.4;
 }
 
-.todo p {
+.task p {
   flex: 1;
 }
 
@@ -27,13 +27,13 @@
   color: var(--purple-700);
 }
 
-.todo button {
+.task button {
   display: flex;
   background: transparent;
   border: none;
   color: var(--gray-300);
 }
 
-.todo button:first-of-type {
+.task button:first-of-type {
   color: var(--blue-500);
 }

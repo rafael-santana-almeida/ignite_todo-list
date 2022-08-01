@@ -1,94 +1,94 @@
 import { useState } from 'react';
 import { v4  as uuidV4} from 'uuid';
 
-import { Todo } from './Components/Todo';
+import { Task } from './Components/Task';
 import { Header } from './Components/Header';
 import { NoContent } from './Components/NoContent';
-import { NewTodoForm } from './Components/NewTodoForm';
+import { NewTaskForm } from './Components/NewTaskForm';
 
 import styles from './App.module.css';
 
 import './global.css';
 
-export interface TodoType {
+export interface TaskType {
   id: string;
   title: string;
   isDone: boolean;
 }
 
 export function App() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>([]);
 
-  function handleCreateNewTodo(title: string) {
-    const newTodo = {
+  function handleCreateNewTask(title: string) {
+    const newTask = {
       id: uuidV4(),
       title,
       isDone: false
     };
 
-    setTodos(state => [...state, newTodo]);
+    setTasks(state => [...state, newTask]);
   }
 
-  function handleDeleteTodo(todoId: string) {
-    const todosWithoutDeleted = todos.filter(todo => todo.id !== todoId);
+  function handleDeleteTask(taskId: string) {
+    const tasksWithoutDeleted = tasks.filter(task => task.id !== taskId);
     
-    setTodos(todosWithoutDeleted);
+    setTasks(tasksWithoutDeleted);
   }
 
-  function handleToggleTodoStatus(todoId: string) {
-    const todosWithStatusUpdated = todos.map(todo => {
-      if (todo.id === todoId) {
-        return {...todo, isDone: !todo.isDone}
+  function handleToggleTaskStatus(taskId: string) {
+    const tasksWithStatusUpdated = tasks.map(task => {
+      if (task.id === taskId) {
+        return {...task, isDone: !task.isDone}
       }
 
-      return todo;
+      return task;
     });
 
-    setTodos(todosWithStatusUpdated);
+    setTasks(tasksWithStatusUpdated);
   }
 
-  const progress = todos.reduce((acc, curr) => {
+  const progress = tasks.reduce((acc, curr) => {
     if (curr.isDone) {
       return acc += 1;
     }
 
     return acc
   }, 0);
-  
+
   return (
     <>
       <Header />
 
       <div className={styles.wrapper}>
-        <NewTodoForm onCreateTodo={handleCreateNewTodo}/>
+        <NewTaskForm onCreateTask={handleCreateNewTask}/>
 
         <main className={styles.main}>
           <header>
-            <div>Tarefas criadas <span>{todos.length}</span></div>
+            <div>Tarefas criadas <span>{tasks.length}</span></div>
             <div>
               Concluídas
               <span>
-                {todos.length === 0 
-                  ? todos.length 
-                  : `${progress} de ${todos.length}`}
+                {tasks.length === 0 
+                  ? tasks.length 
+                  : `${progress} de ${tasks.length}`}
               </span>
             </div>
           </header>
 
-          {todos.length > 0 && (
+          {tasks.length > 0 && (
             <ul>
-              {todos.map(todo => (
-                <Todo 
-                  key={todo.id}
-                  todo={todo}
-                  onDeleteTodo={handleDeleteTodo}
-                  onToggleTodoStatus={handleToggleTodoStatus}
+              {tasks.map(task => (
+                <Task 
+                  key={task.id}
+                  task={task}
+                  onDeleteTask={handleDeleteTask}
+                  onToggleTaskStatus={handleToggleTaskStatus}
                 />
               ))}
             </ul>
           )}
 
-          {todos.length === 0 && <NoContent />}
+          {tasks.length === 0 && <NoContent />}
         </main>
       </div>
     </>

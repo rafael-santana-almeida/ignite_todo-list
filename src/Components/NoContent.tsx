@@ -1,6 +1,5 @@
-
-
 import { ClipboardText } from 'phosphor-react';
+
 import styles from './NoContent.module.css';
 
 export function NoContent() {
@@ -10,5 +9,5 @@ export function NoContent() {
       <p><span>Você ainda não tem tarefas cadastradas</span></p>
       <p>Crie tarefas e organize seus itens a fazer</p>
     </div>
-  )
+  );
 }
