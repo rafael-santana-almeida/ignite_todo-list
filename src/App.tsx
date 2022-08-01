@@ -1,40 +1,97 @@
+import { useState } from 'react';
+import { v4  as uuidV4} from 'uuid';
+
 import { Todo } from './Components/Todo';
 import { Header } from './Components/Header';
+import { NoContent } from './Components/NoContent';
 import { NewTodoForm } from './Components/NewTodoForm';
 
 import styles from './App.module.css';
 
 import './global.css';
-import { useState } from 'react';
-import { NoContent } from './Components/NoContent';
 
-interface Todo {
-  id: number;
+export interface TodoType {
+  id: string;
   title: string;
-  isFinished: boolean;
+  isDone: boolean;
 }
 
 export function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>([]);
+
+  function handleCreateNewTodo(title: string) {
+    const newTodo = {
+      id: uuidV4(),
+      title,
+      isDone: false
+    };
+
+    setTodos(state => [...state, newTodo]);
+  }
+
+  function handleDeleteTodo(todoId: string) {
+    const todosWithoutDeleted = todos.filter(todo => todo.id !== todoId);
+    
+    setTodos(todosWithoutDeleted);
+  }
+
+  function handleToggleTodoStatus(todoId: string) {
+    const todosWithStatusUpdated = todos.map(todo => {
+      if (todo.id === todoId) {
+        return {...todo, isDone: !todo.isDone}
+      }
+
+      return todo;
+    });
+
+    setTodos(todosWithStatusUpdated);
+  }
+
+  const progress = todos.reduce((acc, curr) => {
+    console.log(curr)
+    if (curr.isDone) {
+      return acc += 1;
+    }
+
+    return acc
+  }, 0);
+
+  console.log(progress)
 
   return (
     <>
       <Header />
 
       <div className={styles.wrapper}>
-        <NewTodoForm />
+        <NewTodoForm onCreateTodo={handleCreateNewTodo}/>
 
         <main className={styles.main}>
           <header>
-            <div>Tarefas criadas <span>5</span></div>
-            <div>Concluídas <span>2 de 5</span></div>            
+            <div>Tarefas criadas <span>{todos.length}</span></div>
+            <div>
+              Concluídas
+              <span>
+                {todos.length === 0 
+                  ? todos.length 
+                  : `${progress} de ${todos.length}`}
+              </span>
+            </div>
           </header>
 
-          {todos.length > 0 ? (
+          {todos.length > 0 && (
             <ul>
-              <Todo />
+              {todos.map(todo => (
+                <Todo 
+                  key={todo.id}
+                  todo={todo}
+                  onDeleteTodo={handleDeleteTodo}
+                  onToggleTodoStatus={handleToggleTodoStatus}
+                />
+              ))}
             </ul>
-          ) : <NoContent /> }
+          )}
+
+          {todos.length === 0 && <NoContent />}
         </main>
       </div>
     </>

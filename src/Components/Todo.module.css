@@ -13,10 +13,18 @@
   line-height: 1.4;
 }
 
+.todo p {
+  flex: 1;
+}
+
 .disabled {
   border: 1px solid var(--gray-500);
   color: var(--gray-300);
   text-decoration: line-through;
+}
+
+.checked {
+  color: var(--purple-700);
 }
 
 .todo button {
