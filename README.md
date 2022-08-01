@@ -13,6 +13,7 @@ Este projeto consiste em uma aplicação de controle de tarefas no estilo to-do 
 * :white_check_mark: Uuid
 
 ## :pushpin: Features para serem desenvolvidas
+* :x: Salvar as tarefas no LocalStorage
 * :x: Ajustar responsividade
 * :x: Adicionar modal de confirmação ao deletar uma tarefa
 * :x: Adicionar feedback visual quando uma tarefa for criada, deletada ou for marcada como concluída
