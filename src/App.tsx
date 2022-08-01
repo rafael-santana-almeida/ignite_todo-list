@@ -48,16 +48,13 @@ export function App() {
   }
 
   const progress = todos.reduce((acc, curr) => {
-    console.log(curr)
     if (curr.isDone) {
       return acc += 1;
     }
 
     return acc
   }, 0);
-
-  console.log(progress)
-
+  
   return (
     <>
       <Header />
