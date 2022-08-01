@@ -2,7 +2,7 @@
 Este projeto consiste em uma aplicação de controle de tarefas no estilo to-do list.
 
 ## :trophy: Links do projeto
-* [Projeto](https://ignite-lab-event-platform-rouge.vercel.app/)
+* [Projeto](https://ignite-todo-list-navy.vercel.app/)
 * [Layout](https://www.figma.com/file/HXipoI9ELAwvaMhegjD4IX/ToDo-List?node-id=0%3A1)
 
 ## :wrench: Tecnologias/libs utilizadas
