@@ -11,6 +11,7 @@ Este projeto consiste em uma aplicação de controle de tarefas no estilo to-do 
 * :white_check_mark: Vite
 * :white_check_mark: Phospor React
 * :white_check_mark: Uuid
+* :white_check_mark: CSS Modules
 
 ## :pushpin: Features para serem desenvolvidas
 * :x: Salvar as tarefas no LocalStorage
