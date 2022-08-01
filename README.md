@@ -16,6 +16,8 @@ Este projeto consiste em uma aplicação de controle de tarefas no estilo to-do 
 * :x: Ajustar responsividade
 * :x: Adicionar modal de confirmação ao deletar uma tarefa
 * :x: Adicionar feedback visual quando uma tarefa for criada, deletada ou for marcada como concluída
+* :x: Adicionar possibilidade de editar o texto de uma tarefa (usar modal)
+* :x: Possibilitar ordenar as tarefas usando drag and drop 
 
 ## :rocket: Como executar
 Para executar a aplicação, siga os passos abaixo.
